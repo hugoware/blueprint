@@ -1,0 +1,10 @@
+{
+  "format": "png",
+  "width": 1000,
+  "2x": true,
+  "states": [
+    "show",
+    "more",
+    "show+more"
+  ]
+}

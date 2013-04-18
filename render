@@ -1,0 +1,5 @@
+echo
+echo rendering screens
+node ./util/render.js
+echo
+echo

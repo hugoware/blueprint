@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Workflows</title>
+    <meta charset="utf-8" />
+    
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="stylesheet" href="/style.css" type="text/css" />
+  </head>
+  <body>
+
+
+    <h2>Using Templates</h2>
+
+    <!-- define templates like this (using a key) -->
+    <bp:template key="customer" >
+      <div class="customer" >
+
+        <!-- use double curly brace to define an area -->
+        <h3>{{ name }}</h3>
+        <a href="mailto:{{ email }}" >{{ email }}</a>
+
+        <!-- the markdown attribute will render content with Markdown -->
+        <div markdown>
+
+          <!-- use 3 curly braces to avoid escaping HTML -->
+          {{{ desciption }}}
+        </div>
+      </div>
+    </bp:template>
+
+    <!-- use it by name -->
+    <bp:customer>
+      <name>Fred Smith</name>
+      <email>fred@smith.com</email>
+      <desciption>
+        **Customer Service** - *( 3 years )*
+      </desciption>
+    </bp:customer>
+
+    <!-- you can also use it by source and with attributes -->
+    <div source="customer" name="Marcie Brown" >
+      <email>marcie@brown.com</email>
+      <desciption>
+        **Senior Manager** - *( 8 years )*
+      </desciption>
+    </div>
+
+
+
+    <!-- toggle views and elements with the #hash in the url -->
+    <h2>Managing Views</h2>
+    <ul>
+      <li><a href="#show" >You can toggle views using the #hash value</a></li>
+      <li bp:show="show" ><a href="#show+more" >You can toggle multiple views (separate with a plus sign)</a></li>
+      <li bp:show="more" >Add as many as you need!</li>
+    </ul>
+
+
+    <h2>Export Views</h2>
+    <div markdown>
+      - Use the **render** script from the terminal to export all screenshots
+      - Update the **states** element to identify which views to render
+      - **2x** will save Retina ready screenshots
+      - **format** accepts PDF, but they aren't rendered as long scrolling pages
+    </div>
+
+
+
+    <!-- the 'include' attribute will load in external content -->
+    <div include="views/templates.html" ></div>
+
+    <!-- required scripts -->
+    <script src="/jquery.js" type="text/javascript" ></script>
+    <script src="/handlebars.js" type="text/javascript" ></script>
+    <script src="/markdown.js" type="text/javascript" ></script>
+    <script src="/app.js" type="text/javascript" ></script>
+
+  </body>
+</html>
